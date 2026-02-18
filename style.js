@@ -212,6 +212,53 @@ if (aiInput) {
 }
 
 
+/* ================= HERO BUTTON SCROLL ================= */
+const heroBtn = document.getElementById("heroBtn");
+const signupSection = document.getElementById("signup");
+
+if (heroBtn && signupSection) {
+  heroBtn.addEventListener("click", () => {
+    signupSection.scrollIntoView({ behavior: "smooth" });
+  });
+}
+heroBtn.addEventListener("click", () => {
+  heroBtn.classList.add("clicked");
+  setTimeout(() => heroBtn.classList.remove("clicked"), 200);
+  signupSection.scrollIntoView({ behavior: "smooth" });
+});
+
+
+
+/* ================= BOOKING BUTTONS TO CONTACT FORM ================= */
+const bookingButtons = document.querySelectorAll(".book-btn");
+const bookibgcontactForm = document.getElementById("contactForm");
+
+bookingButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const className = btn.dataset.class; // e.g., HIIT Training
+    const contactSection = document.getElementById("contact");
+
+    // Scroll to contact form
+    contactSection.scrollIntoView({ behavior: "smooth" });
+
+    // Prefill contact form message
+    if (contactForm) {
+      const messageField = contactForm.querySelector('textarea[name="message"]');
+      if (messageField) {
+        messageField.value = `Hello, I would like to book the class: ${className}`;
+      }
+
+      // Optional: focus on the message field
+      messageField.focus();
+    }
+
+    // Optional: add click animation to button
+    btn.classList.add("clicked");
+    setTimeout(() => btn.classList.remove("clicked"), 200);
+  });
+});
+
+
 
 /* ================= SMART WORKOUT PLAN GENERATOR ================= */
 
